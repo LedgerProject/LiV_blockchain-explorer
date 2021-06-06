@@ -1,15 +1,9 @@
-# cbx-quorum-explorer
+# LiV_quorum-explorer
 
-![CBX's skin screenshot](misc/screenshot.png "CBX's skin screenshot")
+This explorer is based on CBX Quorum Explorer
+## Deploying
 
-![Alastria's skin screenshot](misc/screenshot-alastria.png "Alastria's skin screenshot")
-
-## Deploy your explorer 🚀
-Requirements:
-- docker
-- docker-compose
-
-You can set the following environment variables in the `env.sh` file before executing the `launch.sh` script:
+1. Configure the environment variables in the `.env` file:
 - `QUORUM_ENDPOINTS` (e.g., `http://example.org:22000`, `http://example1.org:22000, http://example2.org:22000`)
 - `ENABLE_SSL` (boolean)
 - `EXPLORER_PORT` (the host's port assigned to the webapp)
@@ -21,4 +15,10 @@ You can set the following environment variables in the `env.sh` file before exec
 
 If the consensus algorithm is IBFT, the `extraData` field can be decoded setting the `EXTRA_DATA_FORMAT` variable to `ibft` in the `docker-compose.yaml.template` file for the `http-api` container.
 
-The `launch.sh` script will generate a `docker-compose.yaml` file from the template and execute it.
+2. Run docker compose
+
+`docker-compose up -d`
+
+## Known bugs
+
+- When referring by block number the error "The value does not match any block, transaction or account." is shown due to the comma delimiter
